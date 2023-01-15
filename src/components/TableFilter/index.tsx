@@ -1,4 +1,4 @@
-import moment, { max } from 'moment'
+import moment from 'moment'
 import Button from '../Button'
 import DatePicker from '../DatePicker'
 import Select from '../Select'
