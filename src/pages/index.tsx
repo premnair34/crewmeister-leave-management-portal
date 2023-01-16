@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react'
 import type { GetServerSideProps } from 'next'
-import { getApiUrl, mapAbsenteesByuserId, paginate } from 'src/utils'
+import { mapAbsenteesByuserId, paginate } from 'src/utils'
 import { Table, Pagination, Loading, TableFilter } from 'src/components'
 import { absenceSlice } from 'src/redux/slicers'
 import { State } from 'src/redux/types'
@@ -39,7 +39,7 @@ export default function Absentees({ data, error }: any) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try{
-    const BASE_URL = getApiUrl()
+    const BASE_URL = process.env;
     const absencesResponses = await fetch(`${BASE_URL}/api/absences`)
     const { payload: absentees } = await absencesResponses.json()
     const membersResponse = await fetch(`${BASE_URL}/api/members`)
