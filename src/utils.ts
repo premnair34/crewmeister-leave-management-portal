@@ -8,14 +8,6 @@ export const paginate = (
   // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
   return array.slice((page_number - 1) * page_size, page_number * page_size)
 }
-export const getApiUrl = () => {
-  let base_url =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000'
-      : 'https://example.com' // https://v2ds.netlify.app
-
-  return base_url
-}
 
 const formUsersObj = (members = []) =>
   members?.reduce((users: any, member: any) => {
