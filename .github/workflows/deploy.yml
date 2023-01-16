@@ -68,14 +68,14 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: Build with Next.js
+      - name: crewmeister leave managment portal Build
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: Static HTML export with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
+      - name: crewmeister leave managment portal Start
+        run: ${{ steps.detect-package-manager.outputs.runner }} next start
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./out
+          path: ./next
 
   # Deployment job
   deploy:
