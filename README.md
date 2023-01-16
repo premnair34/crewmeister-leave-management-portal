@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Crewmeister leave management portal
 
-First, run the development server:
+This is a [Next.js](https://nextjs.org/) project for the leave management.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Local setup
+- Run `npm install` to install all the dependencies (node_modules) needed.
+*If you encounter any issues installing the node_modules, run `npm install -f`*
+- After the successful installation of node_modules, run `npm run dev`, this should spin up the application on `http://localhost:3000/`
+- Redirect to [`http://localhost:3000/`](http://localhost:3000/). This is the homepage of the application.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run the build version
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+To run the build version, follow the below steps
+- Run `npm run build`. This command will generate a build folder to the local existing changes.
+- Run `npm run start` to spin up the application over the build version on [`http://localhost:3000/`](http://localhost:3000/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Files structure
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**`src/__tests__`**
+> This folder contains all the unit test cases for all the components present in the application code. To run all the test cases: `npm run test` To run a specific file test cases: `npm run <file_name>`
+>
+> ex: `npm run Services.test.tsx`
+>
+> Key notes:
+> 1. Avoid looking for snapshots, instead find for the text or id.
+> 2. Try using data-testid / data-tid for find the element.
+> 3. Use only `@testing-library/react` for writing the test cases for any component.
+> 4. Follow the exact folder path to create a new test files matching to the files location in src Example: To create a new test file for `/src/components/TestComponent.tsx` create a new file at location `/src/__tests__/components/TestComponent.test.tsx`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**`src/components`**
+> This folder contains all the page related components.
+> - `types.tsx` - All the types that are used for this component are declared here
 
-## Learn More
+**`src/constants.ts`**
+> This folder contains all the constants used across the application
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**`src/pages`**
+> This is kind of a routing folder. All the files declared here acts as a routes to different paths excluding `_app.tsx` and `_document.tsx`. There are next.js config wrappers around the pages.
+> All the apis goes into `src/pages/api` which creates an endpoint on the same domain.
+> Ex: `http://localhost:3000/api/members` will call the `src/pages/api/members` file and returns the response. The code that is written in members.tsx file here acts as a hosted REST endpoint which accepts REST calls and returns data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**`src/redux`**
+> This folder contains all the redux store logic.
 
-## Deploy on Vercel
+**`src/utils.ts`**
+> This folder contains all the reusable logic that will be used across the app.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+For any issues / questions, please reach out to premnairr@gmail.com.
