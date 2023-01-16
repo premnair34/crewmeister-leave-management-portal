@@ -39,7 +39,7 @@ export default function Absentees({ data, error }: any) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try{
-    const BASE_URL = process.env;
+    const {BASE_URL} = process.env;
     const absencesResponses = await fetch(`${BASE_URL}/api/absences`)
     const { payload: absentees } = await absencesResponses.json()
     const membersResponse = await fetch(`${BASE_URL}/api/members`)
