@@ -70,8 +70,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: crewmeister leave managment portal Build
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
-      - name: crewmeister leave managment portal Start
-        run: ${{ steps.detect-package-manager.outputs.runner }} next start
+      # - name: crewmeister leave managment portal Start
+      #   run: ${{ steps.detect-package-manager.outputs.runner }} next start
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
